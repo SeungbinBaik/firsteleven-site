@@ -1,22 +1,73 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>First Eleven</title>
 <style>
-body{max-width:680px;margin:40px auto;padding:0 20px;font-family:-apple-system,system-ui,sans-serif;line-height:1.7;background:#07111f;color:#f4f7fa}
-h1{color:#c8ff16}
+body{max-width:680px;margin:40px auto;padding:0 20px;font-family:-apple-system,system-ui,sans-serif;line-height:1.8;background:#07111f;color:#f4f7fa}
+h1{color:#c8ff16;margin-bottom:.2em}
 a{color:#c8ff16}
-p.tag{color:#aab6c6}
+p.tag{color:#aab6c6;margin-top:0}
+nav{margin:0 0 2em;color:#5f6d7e}
+nav a{margin-right:1em;text-decoration:none}
+nav a[aria-current="true"]{text-decoration:underline}
+section{display:none}
+section:target,section.shown{display:block}
+footer{margin-top:3em;color:#5f6d7e;font-size:.9em}
 </style>
 </head>
 <body>
 <h1>First Eleven</h1>
-<p class="tag">경기 하나가 아니라, 축구 인생을 산다.<br>Live a football life, not just a match.</p>
-<p>열두 살 유망주에서 시작해 데뷔, 주전 경쟁, 이적과 우승, 그리고 은퇴까지 — 한 명의 선수로 커리어 전체를 살아내는 오프라인 축구 인생 시뮬레이션입니다.</p>
-<ul>
-<li><a href="privacy.html">개인정보 처리방침</a> · <a href="privacy-en.html">Privacy Policy</a></li>
-</ul>
+<p class="tag">Live a football life, not just a match.</p>
+
+<nav>
+  <a href="#en" data-lang="en">English</a>
+  <a href="#ja" data-lang="ja">日本語</a>
+  <a href="#ko" data-lang="ko">한국어</a>
+</nav>
+
+<section id="en" lang="en">
+<p>Start as a twelve-year-old prospect and live a whole career — the debut, the fight for
+a shirt, transfers, trophies, and the day you hang the boots up. An offline football life
+simulation. No account, no ads, no analytics.</p>
+<p><a href="privacy-en.html">Privacy Policy</a> · <a href="mailto:seungbin.baik@gmail.com">Support: seungbin.baik@gmail.com</a></p>
+</section>
+
+<section id="ja" lang="ja">
+<p>十二歳の少年から引退の日まで、一人の選手のキャリアをまるごと生きる。デビュー、定位置争い、
+移籍、タイトル、そしてスパイクを脱ぐ日まで。オフラインで遊べるサッカー人生シミュレーション。
+アカウントも広告も解析ツールもない。</p>
+<p><a href="privacy-ja.html">プライバシーポリシー</a> · <a href="mailto:seungbin.baik@gmail.com">お問い合わせ: seungbin.baik@gmail.com</a></p>
+</section>
+
+<section id="ko" lang="ko">
+<p>열두 살 유망주에서 시작해 데뷔, 주전 경쟁, 이적과 우승, 그리고 은퇴까지 — 한 명의 선수로
+커리어 전체를 살아내는 오프라인 축구 인생 시뮬레이션. 계정도 광고도 분석 도구도 없다.</p>
+<p><a href="privacy.html">개인정보 처리방침</a> · <a href="mailto:seungbin.baik@gmail.com">문의: seungbin.baik@gmail.com</a></p>
+</section>
+
+<footer>First Eleven — a football life simulation. Every club, league and player is fictional.</footer>
+
+<noscript><style>section{display:block}nav{display:none}</style></noscript>
+<script>
+// The App Store sends every locale to this one URL, so the page has to pick. Without
+// JavaScript every section shows, which is worse-looking and still correct — never a
+// blank page.
+(function () {
+  var supported = ["en", "ja", "ko"];
+  var wanted = (navigator.language || "en").slice(0, 2).toLowerCase();
+  var chosen = supported.indexOf(wanted) >= 0 ? wanted : "en";
+  if (location.hash && supported.indexOf(location.hash.slice(1)) >= 0) {
+    chosen = location.hash.slice(1);
+  }
+  supported.forEach(function (code) {
+    document.getElementById(code).classList.toggle("shown", code === chosen);
+    var link = document.querySelector('nav a[data-lang="' + code + '"]');
+    if (link) { link.setAttribute("aria-current", String(code === chosen)); }
+  });
+  document.documentElement.lang = chosen;
+})();
+</script>
 </body>
 </html>
