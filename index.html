@@ -23,6 +23,7 @@ footer{margin-top:3em;color:#5f6d7e;font-size:.9em}
 
 <nav>
   <a href="#en" data-lang="en">English</a>
+  <a href="#de" data-lang="de">Deutsch</a>
   <a href="#ja" data-lang="ja">日本語</a>
   <a href="#ko" data-lang="ko">한국어</a>
 </nav>
@@ -32,6 +33,13 @@ footer{margin-top:3em;color:#5f6d7e;font-size:.9em}
 a shirt, transfers, trophies, and the day you hang the boots up. An offline football life
 simulation. No account, no ads, no analytics.</p>
 <p><a href="privacy-en.html">Privacy Policy</a> · <a href="mailto:seungbin.baik@gmail.com">Support: seungbin.baik@gmail.com</a></p>
+</section>
+
+<section id="de" lang="de">
+<p>Fang als zwölfjähriges Talent an und lebe eine ganze Karriere – das Debüt, den Kampf um
+einen Stammplatz, Wechsel, Titel und den Tag, an dem du die Schuhe an den Nagel hängst. Eine
+Fußball-Lebenssimulation, komplett offline. Kein Konto, keine Werbung, keine Analyse.</p>
+<p><a href="privacy-de.html">Datenschutzerklärung</a> · <a href="mailto:seungbin.baik@gmail.com">Support: seungbin.baik@gmail.com</a></p>
 </section>
 
 <section id="ja" lang="ja">
@@ -55,7 +63,7 @@ simulation. No account, no ads, no analytics.</p>
 // JavaScript every section shows, which is worse-looking and still correct — never a
 // blank page.
 (function () {
-  var supported = ["en", "ja", "ko"];
+  var supported = ["en", "de", "ja", "ko"];
   var wanted = (navigator.language || "en").slice(0, 2).toLowerCase();
   var chosen = supported.indexOf(wanted) >= 0 ? wanted : "en";
   if (location.hash && supported.indexOf(location.hash.slice(1)) >= 0) {
